@@ -14,10 +14,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'powerline/powerline'
 Plug 'tpope/vim-commentary'
 Plug 'Raimondi/delimitMate'
-"Plug 'Townk/vim-autoclose'
+Plug 'airblade/vim-gitgutter'
 Plug 'Yggdroot/indentLine'
 call plug#end()
-
 
 "Common
 let mapleader = "\<Space>" 
@@ -302,12 +301,20 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " Indent Line
-let g:indentLine_color_term = 255
-let g:indentLine_color_gui = '#e8e6e6'
+let g:indentLine_indentLevel = 10
+let g:indentLine_color_tty_light = 7
+let g:indentLine_color_dark = 1
+let g:indentLine_color_term = 239
+let g:indentLine_color_gui = '#616161'
+let g:indentLine_concealcursor = 'inc'
+let g:indentLine_conceallevel = 2
 set list
-hi WhiteSpaceChar ctermfg=251 guifg=#999999
-call matchadd("WhiteSpaceChar", "[ \t]")
-set listchars=tab:›\ ,eol:$,trail:⋅
+set listchars=tab:›\ ,eol:$,trail:•
+hi NonText ctermfg=7 guifg=gray
+let g:indentLine_char = 'c'
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_leadingSpaceEnabel = 1
+"let g:indentLine_leadingSpaceChar = "•"
 "set listchars=tab:›\ ,eol:¬,trail:⋅
 
 ""function! ConditionalPairMap(open, close)
