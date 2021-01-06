@@ -36,6 +36,8 @@ set softtabstop=0
 set shiftwidth=2
 
 set clipboard=unnamedplus
+highlight Normal guibg=none
+highlight NonText guibg=none
 
 "map key
 nnoremap <C-j> <C-w>j
@@ -311,9 +313,9 @@ let g:indentLine_conceallevel = 2
 set list
 set listchars=tab:›\ ,eol:$,trail:•
 hi NonText ctermfg=7 guifg=gray
-let g:indentLine_char = 'c'
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-let g:indentLine_leadingSpaceEnabel = 1
+" let g:indentLine_char = 'c'
+" let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+" let g:indentLine_leadingSpaceEnabel = 1
 "let g:indentLine_leadingSpaceChar = "•"
 "set listchars=tab:›\ ,eol:¬,trail:⋅
 
