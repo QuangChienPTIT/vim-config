@@ -8,6 +8,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-syntastic/syntastic'
+Plug 'gcorne/vim-sass-lint'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -16,6 +17,9 @@ Plug 'tpope/vim-commentary'
 Plug 'Raimondi/delimitMate'
 Plug 'airblade/vim-gitgutter'
 Plug 'Yggdroot/indentLine'
+Plug 'tpope/vim-haml'
+Plug 'tpope/vim-rails'
+Plug 'elzr/vim-json'
 call plug#end()
 
 "Common
@@ -36,8 +40,8 @@ set softtabstop=0
 set shiftwidth=2
 
 set clipboard=unnamedplus
-highlight Normal guibg=none
-highlight NonText guibg=none
+let g:dracula_colorterm = 0
+set guifont=Consolas\ 14
 
 "map key
 nnoremap <C-j> <C-w>j
@@ -134,6 +138,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_sass_checkers=["sasslint"]
+let g:syntastic_scss_checkers=["sasslint"]
 
 "vim-javascript
 let g:javascript_plugin_jsdoc = 1
@@ -315,7 +321,7 @@ set listchars=tab:›\ ,eol:$,trail:•
 hi NonText ctermfg=7 guifg=gray
 " let g:indentLine_char = 'c'
 " let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-" let g:indentLine_leadingSpaceEnabel = 1
+let g:indentLine_leadingSpaceEnabel = 0
 "let g:indentLine_leadingSpaceChar = "•"
 "set listchars=tab:›\ ,eol:¬,trail:⋅
 
