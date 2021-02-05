@@ -20,6 +20,8 @@ Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-haml'
 Plug 'tpope/vim-rails'
 Plug 'elzr/vim-json'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 call plug#end()
 
 "Common
@@ -35,15 +37,24 @@ set mouse=a
 set incsearch 
 set hlsearch 
 
-set tabstop=2 
+set tabstop=2
 set softtabstop=0
 set shiftwidth=2
+set expandtab
 
 set clipboard=unnamedplus
 let g:dracula_colorterm = 0
-set guifont=Consolas\ 14
+set guifont="Fira Code"\ 14
+set wrap
+set linebreak
+let g:vim_json_conceal=0
+let g:indentLine_setConceal = 1
 
 "map key
+nnoremap <C-y> "*y
+vnoremap <C-y> "+y
+nnoremap <C-p> "+p
+vnoremap <C-p> "+p
 nnoremap <C-j> <C-w>j
 nnoremap <C-l> <C-w>l
 nnoremap <C-k> <C-w>k
@@ -59,15 +70,31 @@ vnoremap <c-s> <Esc>:w<CR>
 inoremap <C-S-tab> <Esc>:tabprevious<CR>i
 inoremap <C-tab>   <Esc>:tabnext<CR>i
 inoremap <C-t>     <Esc>:tabnew<CR>
+nmap gw (easymotion-overwin-f2)
+let g:EasyMotion_smartcase = 1
 
+" Vim easymotion
+nmap <silent> ;; <Plug>(easymotion-overwin-f)
+nmap <silent> ;l <Plug>(easymotion-overwin-line)
 
 "Theme
 syntax enable
-set background=dark
 highlight Normal ctermbg=None
-colorscheme dracula
-set termguicolors
-
+set background=dark
+" colorscheme dracula
+syntax on
+set t_Co=256
+set cursorline
+colorscheme gruvbox
+let g:gruvbox_contrast_dark = 'soft'
+let g:gruvbox_invert_tabline = 1
+let g:gruvbox_transparent_bg = 1
+let g:airline_theme='gruvbox'
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 "Ctrlp
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/](node_modules|build|public|lib|dist)|(\.(git|svn))$',
@@ -133,6 +160,7 @@ let g:EasyMotion_smartcase = 1
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+let g:syntastic_quiet_messages = {'level': 'warnings'}
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -140,6 +168,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_sass_checkers=["sasslint"]
 let g:syntastic_scss_checkers=["sasslint"]
+let g:syntastic_quiet_messages = {'level': 'warnings'}
 
 "vim-javascript
 let g:javascript_plugin_jsdoc = 1
@@ -318,8 +347,9 @@ let g:indentLine_concealcursor = 'inc'
 let g:indentLine_conceallevel = 2
 set list
 set listchars=tab:›\ ,eol:$,trail:•
+" set lcs+=space:•
 hi NonText ctermfg=7 guifg=gray
 " let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-let g:indentLine_leadingSpaceEnabel = 0
-"let g:indentLine_leadingSpaceChar = "•"
+let g:indentLine_leadingSpaceEnabel = 1
+" let g:indentLine_leadingSpaceChar = "•"
 "set listchars=tab:›\ ,eol:¬,trail:⋅
